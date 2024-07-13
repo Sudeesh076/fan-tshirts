@@ -39,7 +39,39 @@
 			"response": []
 		},
 		{
-			"name": "fetch Product",
+			"name": "Add Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"f2487362-52c0-4932-be88-62604ade9c70\",\r\n    \"street\": \"123 Main St\",\r\n    \"state\": \"CA\",\r\n    \"zip\": \"12345\",\r\n    \"country\": \"USA\",\r\n    \"type\": \"home\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/address",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch Product by filters",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -68,6 +100,35 @@
 					"port": "5000",
 					"path": [
 						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch Address by user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/address/f2487362-52c0-4932-be88-62604ade9c70",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address",
+						"f2487362-52c0-4932-be88-62604ade9c70"
 					]
 				}
 			},

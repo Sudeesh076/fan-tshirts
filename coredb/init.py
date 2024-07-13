@@ -13,6 +13,7 @@ def startDb():
     create_users_table(cursor)
     create_admins_table(cursor)
     create_products_table(cursor)
+    create_address_table(cursor)
     db.commit()
     db.close()
 
@@ -66,4 +67,66 @@ def create_products_table(cursor):
         type TEXT,
         images_location TEXT,
         price 
+    )''')
+
+def create_address_table(cursor) :
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='address'")
+    table_exists = cursor.fetchone()
+
+    if table_exists:
+        cursor.execute("DROP TABLE address")
+
+    cursor.execute('''CREATE TABLE address (
+        id TEXT PRIMARY KEY,
+        user_id TEXT,
+        street TEXT,
+        state TEXT,
+        zip TEXT,
+        country TEXT,
+        type TEXT
+    )''')
+
+def create_orders_table(cursor) :
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='orders'")
+    table_exists = cursor.fetchone()
+
+    if table_exists:
+        cursor.execute("DROP TABLE orders")
+
+    cursor.execute('''CREATE TABLE orders (
+        id TEXT PRIMARY KEY,
+        user_id TEXT,
+        payment_method TEXT,
+        address_id TEXT
+    )''')
+
+def create_order_items_table(cursor) :
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='order_items'")
+    table_exists = cursor.fetchone()
+
+    if table_exists:
+        cursor.execute("DROP TABLE order_items")
+
+    cursor.execute('''CREATE TABLE order_items (
+        id TEXT PRIMARY KEY,
+        order_id TEXT,
+        user_id TEXT,
+        product_id TEXT
+    )''')
+
+def create_order_track_table(cursor) :
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='order_track'")
+    table_exists = cursor.fetchone()
+
+    if table_exists:
+        cursor.execute("DROP TABLE order_track")
+
+    cursor.execute('''CREATE TABLE order_track (
+        id TEXT PRIMARY KEY,
+        order_id TEXT,
+        order_item_id TEXT,
+        user_id TEXT,
+        product_id TEXT,
+        status TEXT,
+        Time TEXT
     )''')
