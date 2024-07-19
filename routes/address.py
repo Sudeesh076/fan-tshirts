@@ -18,9 +18,6 @@ def new_address():
 @address_api.route('/address/<string:user_id>', methods=['GET'])
 def fetch_addresses_by_user_id(user_id):
     try:
-        records = get_addresses_by_user_id(user_id)
-        print(records)
-        products = [record.to_dict() for record in records]
-        return products
+        return get_addresses_by_user_id(user_id)
     except ValueError as e:
         return jsonify({"error": str(e)}), 500

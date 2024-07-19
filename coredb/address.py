@@ -31,7 +31,7 @@ def get_addresses_by_user_id(user_id):
 
         records =  cursor.fetchall()
         db.close()
-        return [Address(*result) for result in records]
+        return [Address(*result).to_dict() for result in records]
 
     except Exception as e:
         raise ValueError(f'Error while fetching addresses: {str(e)}')

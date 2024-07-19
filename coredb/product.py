@@ -57,4 +57,4 @@ def fetch_products(filters: Optional[ProductFilters] = None):
 
     db.close()
 
-    return [Product(*result) for result in results]
+    return [Product(*result).to_dict() for result in results]

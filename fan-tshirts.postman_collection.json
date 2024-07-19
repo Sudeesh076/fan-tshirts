@@ -7,7 +7,19 @@
 	},
 	"item": [
 		{
-			"name": "Add Product",
+			"name": "1. User Sign",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -19,123 +31,24 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"TSHIRT\",\r\n    \"description\": \"This is a sample TSHIRT description.\",\r\n    \"colour\": \"black\",\r\n    \"type\": \"GOT\",\r\n    \"images_location\": \"https://example.com/sample-product-image.jpg\",\r\n    \"price\": 99\r\n}\r\n"
+					"raw": "{\r\n    \"email\": \"User@gmail.com\",\r\n    \"first_name\": \"User_first_name\",\r\n    \"id\": \"35578175-ef5b-4881-b2b5-cdf2fb6afa76\",\r\n    \"last_name\": \"User_last_name\",\r\n    \"password\": \"bsjfsdjkkns\",\r\n    \"phone_number\": \"User_ph_number\"\r\n}"
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/product",
+					"raw": "http://localhost:5000/user",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"product"
+						"user"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Add Address",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\": \"f2487362-52c0-4932-be88-62604ade9c70\",\r\n    \"street\": \"123 Main St\",\r\n    \"state\": \"CA\",\r\n    \"zip\": \"12345\",\r\n    \"country\": \"USA\",\r\n    \"type\": \"home\"\r\n}"
-				},
-				"url": {
-					"raw": "http://127.0.0.1:5000/address",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"address"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "fetch Product by filters",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"colours\" : null ,\r\n    \"types\": [\"BB\"] ,\r\n    \"price_range\" : [0.0, 15.0],\r\n    \"ids\" : null\r\n}"
-				},
-				"url": {
-					"raw": "http://127.0.0.1:5000/product",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"product"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "fetch Address by user",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://127.0.0.1:5000/address/f2487362-52c0-4932-be88-62604ade9c70",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"address",
-						"f2487362-52c0-4932-be88-62604ade9c70"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "User login",
+			"name": "2. User login",
 			"event": [
 				{
 					"listen": "test",
@@ -177,19 +90,7 @@
 			"response": []
 		},
 		{
-			"name": "User Sign",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
+			"name": "3. Add Product",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -201,17 +102,214 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"User@gmail.com\",\r\n    \"first_name\": \"User_first_name\",\r\n    \"id\": \"35578175-ef5b-4881-b2b5-cdf2fb6afa76\",\r\n    \"last_name\": \"User_last_name\",\r\n    \"password\": \"bsjfsdjkkns\",\r\n    \"phone_number\": \"User_ph_number\"\r\n}"
+					"raw": "{\r\n    \"name\": \"TSHIRT\",\r\n    \"description\": \"This is a sample TSHIRT description.\",\r\n    \"colour\": \"black\",\r\n    \"type\": \"GOT\",\r\n    \"images_location\": \"https://example.com/sample-product-image.jpg\",\r\n    \"price\": 99\r\n}\r\n"
 				},
 				"url": {
-					"raw": "http://localhost:5000/user",
+					"raw": "http://127.0.0.1:5000/product",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "5000",
 					"path": [
-						"user"
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Fetch Product by filters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"colours\" : null ,\r\n    \"types\": [\"GOT\"] ,\r\n    \"price_range\" : [0.0, 15.0],\r\n    \"ids\" : null\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Add Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"f2487362-52c0-4932-be88-62604ade9c70\",\r\n    \"street\": \"123 Main St\",\r\n    \"state\": \"CA\",\r\n    \"zip\": \"12345\",\r\n    \"country\": \"USA\",\r\n    \"type\": \"home\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/address",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Fetch Address by user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/address/f2487362-52c0-4932-be88-62604ade9c70",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address",
+						"f2487362-52c0-4932-be88-62604ade9c70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Add Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"ADDed\",\r\n    \"address_id\": \"c2bd1422-44aa-4019-b4f3-a98f2159184f\",\r\n    \"product_ids\": [\"46aac4a2-8688-4cab-a54e-25027b4240c7\", \"bea361eb-88a0-430f-a099-fe75682e3d68\"]\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Fetch Orders by Filters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\" : null ,\r\n    \"userId\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Update Order",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderItemId\": \"43bdd7ea-3f7e-4fa0-a357-537b69b54c68\",\r\n    \"status\": \"Order Shipped250\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/orders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"orders"
 					]
 				}
 			},

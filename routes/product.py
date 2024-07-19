@@ -20,8 +20,6 @@ def get_user():
     try:
         data = request.get_json()
         productFilters = ProductFilters.from_json(data)
-        records = fetch_products(productFilters)
-        products = [record.to_dict() for record in records]
-        return products
+        return fetch_products(productFilters)
     except Exception as e:
         return jsonify({"error": str(e)}), 500

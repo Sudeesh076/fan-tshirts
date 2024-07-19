@@ -14,6 +14,9 @@ def startDb():
     create_admins_table(cursor)
     create_products_table(cursor)
     create_address_table(cursor)
+    create_orders_table(cursor)
+    create_order_items_table(cursor)
+    create_order_track_table(cursor)
     db.commit()
     db.close()
 
