@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from coredb.user import *
-from helpers.Users import User, UserLogin
+from helpers.Users import User, UserLogin, AdminLogin
 
 user_api = Blueprint('user', __name__)
 
@@ -28,6 +28,21 @@ def loginUser():
         authenticated = userLogin.validatePassword(userRecord.password)
         if authenticated:
             return userRecord.to_dict()
+        else:
+            return jsonify({"error": "Authentication Failed"}), 401
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@user_api.route('/login/admin', methods=['POST'])
+def loginAdmin():
+    try:
+        data = request.get_json()
+
+        adminLogin = AdminLogin.from_json(data)
+        adminRecord = get_admin_by_email(adminLogin.email)
+        authenticated = adminLogin.validatePassword(adminRecord.password)
+        if authenticated:
+            return adminRecord.to_dict()
         else:
             return jsonify({"error": "Authentication Failed"}), 401
     except Exception as e:

@@ -59,6 +59,30 @@ class UserLogin:
         else:
             return False
 
+@dataclass
+class AdminLogin:
+    email: str
+    password: str
+
+    @classmethod
+    def from_json(cls, data):
+        required_fields = ['email', 'password']
+        for field in required_fields:
+            if field not in data:
+                raise ValueError(f'Missing required field: {field}')
+        encrypted_password = encrypt_password(data['password'])
+
+        return cls(
+            email=data['email'],
+            password=encrypted_password,
+        )
+
+    def validatePassword(self,password):
+        if decrypt_password(self.password)==decrypt_password(password):
+            return True
+        else:
+            return False
+
 
 def encrypt_password(password):
     cipher_suite = Fernet(key)

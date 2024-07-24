@@ -1,5 +1,8 @@
 import sqlite3
 
+from helpers.Users import encrypt_password
+import uuid
+
 DATABASE = 'fan_tshirts.db'
 
 def get_db_connection():
@@ -11,6 +14,7 @@ def startDb():
     cursor = db.cursor()
     cursor.execute("PRAGMA foreign_keys = ON;")
     create_users_table(cursor)
+    create_admin_table(cursor)
     create_admins_table(cursor)
     create_products_table(cursor)
     create_address_table(cursor)
@@ -37,6 +41,30 @@ def create_users_table(cursor):
         phone_number TEXT
     )''')
 
+def create_admin_table(cursor):
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='admin'")
+    table_exists = cursor.fetchone()
+
+    if table_exists:
+        cursor.execute("DROP TABLE admin")
+
+    cursor.execute('''CREATE TABLE admin (
+        id TEXT PRIMARY KEY,
+        email TEXT UNIQUE,
+        password TEXT,
+        first_name TEXT,
+        last_name TEXT,
+        phone_number TEXT
+    )''')
+
+    add_admin_record(cursor, 'admin1@example.com', 'password123', 'John', 'Doe', '1234567890')
+    add_admin_record(cursor, 'admin2@example.com', 'pass456', 'Jane', 'Smith', '0987654321')
+
+def add_admin_record(cursor, email,password,first_name,last_name,phone_number):
+    user_id = str(uuid.uuid4())
+    encrypted_password = encrypt_password(password)
+    cursor.execute('''INSERT INTO admin (id, email, password, first_name, last_name, phone_number)
+                      VALUES (?, ?, ?, ?, ?, ?)''', (user_id,email,encrypted_password,first_name,last_name,phone_number))
 
 def create_admins_table(cursor):
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='admins'")

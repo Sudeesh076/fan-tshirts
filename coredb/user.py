@@ -54,6 +54,21 @@ def get_user_by_email(email):
         raise ValueError('Authentication Failed')
 
 
+def get_admin_by_email(email):
+    db = get_db_connection()
+    cursor = db.cursor()
+
+    cursor.execute('SELECT id, email, password, first_name, last_name, phone_number FROM admin WHERE email = ?', (email,))
+    result = cursor.fetchone()
+
+    cursor.close()
+
+    if result:
+        return User(*result)
+    else:
+        raise ValueError('Authentication Failed')
+
+
 def get_user_by_id(id):
     db = get_db_connection()
     cursor = db.cursor()
