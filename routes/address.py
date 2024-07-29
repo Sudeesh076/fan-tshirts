@@ -15,7 +15,7 @@ def new_address():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@address_api.route('/address/<string:user_id>', methods=['POST'])
+@address_api.route('/address/<string:user_id>', methods=['GET'])
 def fetch_addresses_by_user_id(user_id):
     try:
         return get_addresses_by_user_id(user_id)

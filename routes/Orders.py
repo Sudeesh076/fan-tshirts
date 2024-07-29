@@ -22,7 +22,7 @@ def new_orders():
         return jsonify({"error": str(e)}), 500
 
 
-@orders_api.route('/orders', methods=['POST'])
+@orders_api.route('/orders', methods=['PUT'])
 def update_orders():
     try:
         data = request.get_json()
@@ -32,7 +32,7 @@ def update_orders():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@orders_api.route('/orders', methods=['get'])
+@orders_api.route('/orders/get', methods=['POST'])
 def get_user():
     try:
         data = request.get_json()
