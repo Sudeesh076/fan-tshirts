@@ -22,7 +22,7 @@ def new_orders():
         return jsonify({"error": str(e)}), 500
 
 
-@orders_api.route('/orders', methods=['PUT'])
+@orders_api.route('/orders', methods=['POST'])
 def update_orders():
     try:
         data = request.get_json()

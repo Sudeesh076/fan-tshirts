@@ -15,7 +15,7 @@ def new_product():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@product_api.route('/product', methods=['get'])
+@product_api.route('/product', methods=['POST'])
 def get_user():
     try:
         data = request.get_json()
