@@ -56,8 +56,8 @@ def create_admin_table(cursor):
         phone_number TEXT
     )''')
 
-    add_admin_record(cursor, 'admin1@example.com', 'password123', 'John', 'Doe', '1234567890')
-    add_admin_record(cursor, 'admin2@example.com', 'pass456', 'Jane', 'Smith', '0987654321')
+    add_admin_record(cursor, 'vishnuadmin@gmail.com', 'Password@123', 'Vishnu', 'Reddy', '4844578482')
+    add_admin_record(cursor, 'nikhiladmin@gmail.com', 'Password@123', 'Nikhil', 'Shivanoori', '6105579459')
 
 def add_admin_record(cursor, email,password,first_name,last_name,phone_number):
     user_id = str(uuid.uuid4())

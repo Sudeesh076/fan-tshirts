@@ -15,7 +15,7 @@ app.register_blueprint(orders_api)
 app.register_blueprint(address_api)
 
 if __name__ == '__main__':
-    startDb()
+    #startDb()
     app.run(debug=False, port=5000)
 
 
