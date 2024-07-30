@@ -19,6 +19,23 @@ def add_product(product):
         db.rollback()
         raise ValueError(f'Error while adding product: {str(e)}')
 
+def delete_product(product_id):
+    try:
+        db = get_db_connection()
+        cursor = db.cursor()
+        cursor.execute('''
+            DELETE FROM products WHERE id = ?
+        ''', (product_id,))
+        db.commit()
+        db.close()
+        return "Product is Deleted"
+
+    except Exception as e:
+        db.rollback()
+        db.close()
+        raise ValueError(f'Error while deleting product: {str(e)}')
+
+
 
 def fetch_products(filters: Optional[ProductFilters] = None):
     db = get_db_connection()

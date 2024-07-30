@@ -18,6 +18,21 @@ def add_address(address):
         db.rollback()
         raise ValueError(f'Error while adding address: {str(e)}')
 
+def delete_address(address_id):
+    try:
+        db = get_db_connection()
+        cursor = db.cursor()
+        cursor.execute('''
+            DELETE FROM address WHERE id = ?
+        ''', (address_id,))
+        db.commit()
+        db.close()
+        return "Address is Deleted"
+
+    except Exception as e:
+        raise ValueError(f'Error while deleting address: {str(e)}')
+
+
 
 def get_addresses_by_user_id(user_id):
     try:

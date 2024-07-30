@@ -352,6 +352,52 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete Address",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/address/8ad951b9-3c0b-47e0-b2ba-76ff9bf9bb50",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address",
+						"8ad951b9-3c0b-47e0-b2ba-76ff9bf9bb50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/product/44162852-ac55-4faa-b7b8-284f57f94e64",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"product",
+						"44162852-ac55-4faa-b7b8-284f57f94e64"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
