@@ -25,7 +25,7 @@ def loginUser():
 
         userLogin = UserLogin.from_json(data)
         userRecord = get_user_by_email(userLogin.email)
-        authenticated = userLogin.validatePassword(userRecord.password)
+        authenticated = userLogin.validatePassword(userLogin.password,userRecord.password)
         if authenticated:
             return userRecord.to_dict()
         else:
@@ -40,7 +40,7 @@ def loginAdmin():
 
         adminLogin = AdminLogin.from_json(data)
         adminRecord = get_admin_by_email(adminLogin.email)
-        authenticated = adminLogin.validatePassword(adminRecord.password)
+        authenticated = adminLogin.validatePassword(adminLogin.password,adminRecord.password)
         if authenticated:
             return adminRecord.to_dict()
         else:

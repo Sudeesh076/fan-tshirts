@@ -53,8 +53,8 @@ class UserLogin:
             password=encrypted_password,
         )
 
-    def validatePassword(self,password):
-        if decrypt_password(self.password)==decrypt_password(password):
+    def validatePassword(self,password1,password2):
+        if decrypt_password(password1)==decrypt_password(password2):
             return True
         else:
             return False
@@ -77,8 +77,8 @@ class AdminLogin:
             password=encrypted_password,
         )
 
-    def validatePassword(self,password):
-        if decrypt_password(self.password)==decrypt_password(password):
+    def validatePassword(self,password1,password2):
+        if decrypt_password(password1)==decrypt_password(password2):
             return True
         else:
             return False
