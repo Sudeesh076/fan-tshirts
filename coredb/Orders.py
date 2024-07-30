@@ -111,7 +111,7 @@ def get_orders(user_id=None, order_id=None):
                    oi.id as order_item_id, oi.product_id,
                    p.name as product_name, p.description as product_description, p.colour as product_colour,
                    ot.id as order_track_id, ot.status, ot.Time,
-                   u.id, u.email, u.first_name, u.last_name, u.phone_number
+                   u.id, u.email, u.first_name, u.last_name, u.phone_number ,  p.images_location as images_location
             FROM orders o
             JOIN order_items oi ON o.id = oi.order_id
             JOIN (
@@ -183,7 +183,8 @@ def get_orders(user_id=None, order_id=None):
                         'product_id': row[10],
                         'name': row[11],
                         'description': row[12],
-                        'colour': row[13]
+                        'colour': row[13],
+                        'images_location' : row[22],
                     },
                     'tracks': [{
                         'order_track_id': row[14],
